@@ -1,0 +1,53 @@
+body {
+  background-color: lightgrey;
+  font-family: 'Bellefair', serif;
+}
+
+h1 {
+  font-size: 50px;
+  font: lighter;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.music-player {
+  width: 100%;
+}
+
+.search-input {
+  margin-left: 200px;
+  width: 500px;
+}
+
+.search-button {
+  width: 400px;
+  background-color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  text-align: center;
+  margin: 11px;
+  width: 100px;
+}
+
+img {
+  width: 120px;
+}
+
+p {
+  font-size: 20px;
+  text-align: center;
+}
