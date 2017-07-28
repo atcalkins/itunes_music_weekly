@@ -28,7 +28,7 @@ document.getElementById("search-button").addEventListener("click", function(e) {
       return;
     }
     response.json().then(function(data) {
-      let templateContainer = "";
+      let resultsContainer = "";
       data.results.forEach(function(items) {
         if (items.kind === "song") {
           let template = `
@@ -40,10 +40,10 @@ document.getElementById("search-button").addEventListener("click", function(e) {
                 </li>
               </ul>
             `;
-          templateContainer += template;
+          resultsContainer += template;
         }
       });
-      songsFound.innerHTML = templateContainer;
+      songsFound.innerHTML = resultsContainer;
       searchBar.value = "";
 
       //working on getting audio to play messing around with the following code but dont know placement
