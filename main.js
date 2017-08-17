@@ -11,16 +11,10 @@ const initialUrl = "https://itunes.apple.com/search?term=";
 const songsFound = document.querySelector(".results");
 const searchBar = document.querySelector(".search-input");
 const button = document.querySelector("button");
+const musicPlayer = document.querySelector("audio")
 
 document.getElementById("search-button").addEventListener("click", function(e) {
-//   if(e.target && e.target.nodeName == "LI") {
-//   const x = document.getElementByClass("music-player");
-//
-// function playAudio() {
-//     x.play();
-// } ;
-// 	}
-  let userSearch = initialUrl + searchBar.value;
+  let userSearch = initialUrl + searchBar.value + "&entity=musicTrack";
   e.preventDefault();
 
   fetch(userSearch).then(function(response) {
@@ -35,19 +29,32 @@ document.getElementById("search-button").addEventListener("click", function(e) {
               <ul>
                 <li>
                   <img src="${items.artworkUrl100}" alt="">
-                  <div class="song-title"><a href="${items.trackViewUrl}">${items.trackName}</div>
-                  <p><a href="${items.artistViewUrl}">${items.artistName}</p>
+                  <button class="link">${items.trackName} </button>
+                  <p><a href="${items.artistViewUrl}">${items.artistName} </a></p>
                 </li>
               </ul>
             `;
           resultsContainer += template;
         }
-      });
-      songsFound.innerHTML = resultsContainer;
-      searchBar.value = "";
+        songsFound.innerHTML = resultsContainer;
+        searchBar.value = "";
 
-      //working on getting audio to play messing around with the following code but dont know placement
-      //document.getElementById('yourAudioTag').play();
+        let link = document.getElementsByClassName("link")
+
+        for (let i = 0; i < link.length; i++) {
+          link[i].addEventListener("click", function(e) {
+            musicPlayer.setAttribute("src", data.results[i].previewUrl)
+          })
+        }
+
+        // data.results.forEach(function(item) {
+        //   let link = document.querySelector("img")
+        //   link.addEventListener("click", function(e) {
+        //     musicPlayer.setAttribute("src", item.previewUrl)
+        //   })
+        // });
+      })
+
     });
   });
 });
